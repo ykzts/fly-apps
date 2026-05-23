@@ -1,0 +1,28 @@
+app = "ykzts-uptime-db"
+primary_region = "nrt"
+
+[build]
+  image = "mariadb:12.2.2-noble"
+
+[env]
+  # MYSQL_DATABASE = ""
+  # MYSQL_PASSWORD = ""
+  MYSQL_RANDOM_ROOT_PASSWORD = "1"
+  MYSQL_ROOT_HOST = "localhost"
+  # MYSQL_USER = ""
+
+[mounts]
+  destination = "/var/lib/mysql"
+  source = "mariadb_data"
+
+[checks.mariadb]
+  grace_period = "60s"
+  interval = "15s"
+  port = 3306
+  timeout = "5s"
+  type = "tcp"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "1gb"

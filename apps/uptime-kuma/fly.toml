@@ -1,0 +1,36 @@
+app = "ykzts-uptime"
+primary_region = "nrt"
+
+[build]
+  image = "ghcr.io/louislam/uptime-kuma:2.3.2"
+
+[env]
+  # UPTIME_KUMA_DB_PASSWORD = ""
+  UPTIME_KUMA_DB_HOSTNAME = "ykzts-uptime-db.internal"
+  # UPTIME_KUMA_DB_NAME = ""
+  UPTIME_KUMA_DB_PORT = "3306"
+  UPTIME_KUMA_DB_TYPE = "mariadb"
+  # UPTIME_KUMA_DB_USERNAME = ""
+
+[mounts]
+  source = "uptime_kuma_data"
+  destination = "/app/data"
+
+[http_service]
+  auto_start_machines = true
+  auto_stop_machines = "off"
+  force_https = true
+  internal_port = 3001
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "30s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/entry-page"
+    timeout = "5s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "512mb"
