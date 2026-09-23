@@ -2,7 +2,7 @@ app = "ykzts-uptime"
 primary_region = "nrt"
 
 [build]
-  image = "ghcr.io/louislam/uptime-kuma:2.3.2"
+  image = "ghcr.io/louislam/uptime-kuma:2.5.5"
 
 [env]
   # UPTIME_KUMA_DB_PASSWORD = ""
