@@ -2,7 +2,7 @@ app = "ykzts-uptime-db"
 primary_region = "nrt"
 
 [build]
-  image = "mariadb:12.2.2-noble"
+  image = "mariadb:12.2.2-noble@sha256:6a4c4bbf0447c2247801309513fcc0dd17c3f35390368139ce419387fdd1144d"
 
 [env]
   # MYSQL_DATABASE = ""
